@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Http;
 //https://api.trello.com/1/lists/{id}/cards?key=APIKey&token=APIToken (get list card)
 //https://api.trello.com/1/lists?name={name}&idBoard=5abbe4b7ddc1b351ef961414&key=APIKey&token=APIToken
 //https://api.trello.com/1/cards/{id}?key=APIKey&token=APIToken
+// https://api.trello.com/1/cards?idList=5abbe4b7ddc1b351ef961414&key=APIKey&token=APIToken
 class AuthorizeController extends Controller
 {
     const BASE_API_URL='https://api.trello.com/1/';
@@ -29,6 +30,7 @@ class AuthorizeController extends Controller
    const Create_List='lists?name=';
    const ID = '&idBoard=';
    const CARD = 'cards/';
+   const CARD_ID='cards?idList=';
     public function getUser(Request $request) {
     //    dd($request->apikey);
     //    dd($request->token);
@@ -275,8 +277,38 @@ class AuthorizeController extends Controller
                 //  dd($listcard);
             // dd($listcard[0]->id);
             // dd($listcard[0]->name);
-       return view('viewlistcard',compact('listcard'));
+       return view('cardinfo',compact('listcard'));
 
     }
+        //create listcard view page
+        public function createlistcard(Request $request) {
+            //  dd($request);
+             // dd($request->id);
+             //dd($request->name);
+             $id=$request->id;
+         return view('createlistcard',compact('id'));
+
+      }
+//create list card
+public function createlistcards(Request $request) {
+      // dd($request);
+
+  // dd($request->id);
+  //dd($request->name);
+  $b= trello::all();
+  // dd($b[0]->apikey);
+  // dd($b[0]->token);
+
+
+$url=self::BASE_API_URL .self::CARD_ID .$request->id .'&key='.$b[0]->apikey.'&token='.$b[0]->token;
+
+ //  dd($url);
+$response= Http::post($url);
+
+    //dd($response->status());
+
+ return view('trelloboard');
+
+}
 
 }

@@ -12,48 +12,17 @@
 <body>
 
 <div class="container">
-  <h2>  List Card</h2>
+  <h2>  List Card Information</h2>
 </div>
 <br>
-  @php
-   $i=count($listcard);
-   for($key=0;$key<$i;$key++) {
-    @endphp
+
 
   <div class="card bg-info text-white">
-    <div class="card-header">
-    <form action="{{route('cardinfos')}}" method="POST">
-    @csrf
-        <input type="hidden" id="id" name="id" value="{{$listcard[$key]->id}}">
-
-        <input type="hidden" id="name" name="name" value="{{$listcard[$key]->name}}">
-        <button type="submit" class="btn btn-danger">Card Information</button>
-  </form>
-    </div>
-    <div class="card-body">{{$listcard[$key]->name}}</div>
-    <div class="card-footer">
-    <form action="{{route('getupdateboard')}}" method="POST">
-    @csrf
-        <input type="hidden" id="id" name="id" value="{{$listcard[$key]->id}}">
-
-        <input type="hidden" id="name" name="name" value="{{$listcard[$key]->name}}">
-
-        <button type="submit" class="btn btn-success">Update Board</button>
-  </form>
-  <form action="{{route('getlistcard')}}" method="POST">
-    @csrf
-    <input type="hidden" id="id" name="id" value="{{$listcard[$key]->id}}">
-
-        <input type="hidden" id="name" name="name" value="{{$listcard[$key]->name}}">
-
-        <button type="submit" class="btn btn-warning"> View List card</button>
-  </form>
-    </div>
+    <div class="card-header">Card ID:{{$listcard->id}}</div>
+    <div class="card-body">Card Name:{{$listcard->name}}</div>
+    <div class="card-footer">{{$listcard->desc}}   </div>
   </div>
   <br>
-  @php
 
-}
-  @endphp
 </body>
 </html>

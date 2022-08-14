@@ -22,23 +22,17 @@
 
   <div class="card bg-info text-white">
     <div class="card-header">
-    <form action="{{route('delete')}}" method="POST">
-    @csrf
-        <input type="hidden" id="id" name="id" value="{{$list[$key]->id}}">
-        <input type="hidden" id="idBoard" name="idBoard" value="{{$list[$key]->idBoard}}">
-        <input type="hidden" id="name" name="name" value="{{$list[$key]->name}}">
-        <button type="submit" class="btn btn-danger">Delete Board</button>
-  </form>
+
     </div>
     <div class="card-body">{{$list[$key]->name}}</div>
     <div class="card-footer">
-    <form action="{{route('getupdateboard')}}" method="POST">
+    <form action="{{route('createlistcard')}}" method="POST">
     @csrf
         <input type="hidden" id="id" name="id" value="{{$list[$key]->id}}">
         <input type="hidden" id="idBoard" name="idBoard" value="{{$list[$key]->idBoard}}">
         <input type="hidden" id="name" name="name" value="{{$list[$key]->name}}">
 
-        <button type="submit" class="btn btn-success">Update Board</button>
+        <button type="submit" class="btn btn-success">Create List Card</button>
   </form>
   <form action="{{route('getlistcard')}}" method="POST">
     @csrf

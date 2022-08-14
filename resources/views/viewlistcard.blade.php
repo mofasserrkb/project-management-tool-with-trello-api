@@ -32,22 +32,6 @@
     </div>
     <div class="card-body">{{$listcard[$key]->name}}</div>
     <div class="card-footer">
-    <form action="{{route('getupdateboard')}}" method="POST">
-    @csrf
-        <input type="hidden" id="id" name="id" value="{{$listcard[$key]->id}}">
-
-        <input type="hidden" id="name" name="name" value="{{$listcard[$key]->name}}">
-
-        <button type="submit" class="btn btn-success">Update Board</button>
-  </form>
-  <form action="{{route('getlistcard')}}" method="POST">
-    @csrf
-    <input type="hidden" id="id" name="id" value="{{$listcard[$key]->id}}">
-
-        <input type="hidden" id="name" name="name" value="{{$listcard[$key]->name}}">
-
-        <button type="submit" class="btn btn-warning"> View List card</button>
-  </form>
     </div>
   </div>
   <br>

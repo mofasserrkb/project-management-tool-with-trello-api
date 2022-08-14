@@ -32,3 +32,5 @@ Route::post('/viewlistcard',[AuthorizeController::class,'viewlistcard'])->name('
 Route::post('/createlist',[AuthorizeController::class,'createlist'])->name('createlist');
 Route::post('/createlists',[AuthorizeController::class,'createlists'])->name('createlists');
 Route::post('/cardinfo',[AuthorizeController::class,'cardinfo'])->name('cardinfo');
+Route::post('/createlistcard',[AuthorizeController::class,'createlistcard'])->name('createlistcard');
+Route::post('/createlistcards',[AuthorizeController::class,'createlistcards'])->name('createlistcards');
